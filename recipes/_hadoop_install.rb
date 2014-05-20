@@ -21,7 +21,8 @@ template "#{node['hadoop']['home']}/conf/hadoop-env.sh" do
     hadoop_user = node['hadoop']['user_name']
   end
 
-  variables hadoop_user: hadoop_user
+  variables hadoop_user: hadoop_user,
+            java_home: node['java']['java_home']
 end
 
 template "#{node['hadoop']['home']}/conf/core-site.xml" do
