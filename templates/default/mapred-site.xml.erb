@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <%- if @mapred_tracker -%>
+  <property>
+    <name>mapred.job.tracker</name>
+    <value><%= @mapred_tracker %></value>
+  </property>
+  <%- end -%>
+  <property>
+    <name>mapred.output.compress</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>mapred.output.compression.codec</name>
+    <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+  </property>
+</configuration>
