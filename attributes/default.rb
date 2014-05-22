@@ -1,6 +1,8 @@
 default['hadoop']['version'] = '0.20.2-cdh3u5'
 default['hadoop']['checksum'] = '70001638f8ada92d94c1a11a4b025f7dc3fede72b6cedc3e2b9f316b6e8c161a'
 default['hadoop']['home'] = '/opt/hadoop'
+default['hadoop']['dir_owner'] = 'root'
+default['hadoop']['dir_group'] = 'root'
 
 # If you set following attributes, this client works as
 # remote connection mode.
