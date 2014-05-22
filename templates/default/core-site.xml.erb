@@ -11,16 +11,11 @@
   <%- if @fs_default -%>
   <property>
     <name>fs.default.name</name>
-    <value><%= @fs_default %>54310</value>
+    <value><%= @fs_default %></value>
   </property>
   <%- end -%>
   <property>
     <name>io.compression.codecs</name>
-    <value>
-      org.apache.hadoop.io.compress.DefaultCodec,
-      org.apache.hadoop.io.compress.GzipCodec,
-      org.apache.hadoop.io.compress.BZip2Codec,
-      org.apache.hadoop.io.compress.SnappyCodec
-    </value>
+    <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec</value>
   </property>
 </configuration>
