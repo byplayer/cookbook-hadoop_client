@@ -16,13 +16,20 @@ bash 'install_hadoop' do
 end
 
 template "#{node['hadoop']['home']}/conf/hadoop-env.sh" do
-  hadoop_user = nil
-  if node['hadoop'] && node['hadoop']['user_name']
-    hadoop_user = node['hadoop']['user_name']
-  end
+  hadoop_user =
+    if node['hadoop'] && node['hadoop']['user_name']
+      node['hadoop']['user_name']
+    end
+
+  java_home =
+    if node['java'] && node['java']['java_home']
+      node['java']['java_home']
+    elsif node['jdk'] && node['jdk']['home']
+      node['jdk']['home']
+    end
 
   variables hadoop_user: hadoop_user,
-            java_home: node['java']['java_home']
+            java_home: java_home
 end
 
 template "#{node['hadoop']['home']}/conf/core-site.xml" do
