@@ -22,7 +22,7 @@ bash 'install_hadoop' do
   code <<-EOH
     tar xzf #{tar_name}.tar.gz
     mv #{tar_name} #{node['hadoop']['home']}
-    chown -R #{['hadoop']['dir_owner']}:#{['hadoop']['dir_group']} #{node['hadoop']['home']}
+    chown -R #{node['hadoop']['dir_owner']}:#{node['hadoop']['dir_group']} #{node['hadoop']['home']}
   EOH
 
   not_if { ::File.exist?(node['hadoop']['home']) }
