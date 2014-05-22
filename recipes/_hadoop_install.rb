@@ -11,6 +11,7 @@ directory hadoop_parent_dir do
   owner node['hadoop']['dir_owner']
   group node['hadoop']['dir_group']
   mode 00755
+  recursive true
   action :create
 
   not_if { ::File.exist?(hadoop_parent_dir) }
