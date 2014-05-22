@@ -8,8 +8,8 @@ end
 
 hadoop_parent_dir = File.expand_path(File.join(node['hadoop']['home'], '..'))
 directory hadoop_parent_dir do
-  owner node['hadoop']['user']['name']
-  group node['hadoop']['group']['name']
+  owner node['hadoop']['dir_owner']
+  group node['hadoop']['dir_group']
   mode 00755
   action :create
 
@@ -22,7 +22,7 @@ bash 'install_hadoop' do
   code <<-EOH
     tar xzf #{tar_name}.tar.gz
     mv #{tar_name} #{node['hadoop']['home']}
-    chown -R #{node['hadoop']['user']['name']}:#{node['hadoop']['group']['name']} #{node['hadoop']['home']}
+    chown -R #{['hadoop']['dir_owner']}:#{['hadoop']['dir_group']} #{node['hadoop']['home']}
   EOH
 
   not_if { ::File.exist?(node['hadoop']['home']) }
