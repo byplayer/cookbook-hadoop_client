@@ -33,8 +33,15 @@ template "#{node['hadoop']['home']}/conf/hadoop-env.sh" do
 end
 
 template "#{node['hadoop']['home']}/conf/core-site.xml" do
-  host = node['hadoop']['fs_default']['host']
-  port = node['hadoop']['fs_default']['port']
+  host =
+    if node['hadoop'] && node['hadoop']['fs_default']
+      node['hadoop']['fs_default']['host']
+    end
+
+  port =
+    if node['hadoop'] && node['hadoop']['fs_default']
+      node['hadoop']['fs_default']['port']
+    end
 
   fs_default = nil
   if host && port
@@ -45,8 +52,15 @@ template "#{node['hadoop']['home']}/conf/core-site.xml" do
 end
 
 template "#{node['hadoop']['home']}/conf/mapred-site.xml" do
-  host = node['hadoop']['mapred_tracker']['host']
-  port = node['hadoop']['mapred_tracker']['port']
+  host =
+    if node['hadoop'] && node['hadoop']['mapred_tracker']
+        node['hadoop']['mapred_tracker']['host']
+    end
+
+  port =
+    if node['hadoop'] && node['hadoop']['mapred_tracker']
+      node['hadoop']['mapred_tracker']['port']
+    end
 
   mapred_tracker = nil
   if host && node
